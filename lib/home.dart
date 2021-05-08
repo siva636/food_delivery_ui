@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
             Search(),
             const SizedBox(height: 25),
             CategoryList(),
-            const SizedBox(height: 10),
+            const SizedBox(height: 25),
             Expanded(child: PopularList()),
           ],
         ),
