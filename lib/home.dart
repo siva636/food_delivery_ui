@@ -12,24 +12,29 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 10),
-            CustomAppBar(),
-            const SizedBox(height: 10),
-            Title(),
-            const SizedBox(height: 10),
-            Search(),
-            const SizedBox(height: 25),
-            CategoryList(),
-            const SizedBox(height: 25),
-            Expanded(child: PopularList()),
-          ],
-        ),
+      body: Stack(
+        children: [
+          Bg(),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 10),
+                CustomAppBar(),
+                const SizedBox(height: 10),
+                Title(),
+                const SizedBox(height: 10),
+                Search(),
+                const SizedBox(height: 25),
+                CategoryList(),
+                const SizedBox(height: 25),
+                Expanded(child: PopularList()),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -285,5 +290,36 @@ class PopularList extends StatelessWidget {
         ),
       ],
     );
+  }
+}
+
+class Bg extends StatelessWidget {
+  const Bg({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipOval(
+      clipper: MyClipper(),
+      child: Container(
+        color: Colors.grey.shade100,
+      ),
+    );
+  }
+}
+
+class MyClipper extends CustomClipper<Rect> {
+  @override
+  Rect getClip(Size size) {
+    double column = size.width / 4;
+    double row = size.height / 8;
+
+    Rect rect = Rect.fromCenter(
+        center: Offset(0, row), width: 6 * column, height: row * 4);
+    return rect;
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper<Rect> oldClipper) {
+    return false;
   }
 }
