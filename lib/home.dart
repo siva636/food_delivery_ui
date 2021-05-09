@@ -299,7 +299,7 @@ class Bg extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipOval(
-      clipper: MyClipper(),
+      clipper: BgClipper(),
       child: Container(
         color: Colors.grey.shade100,
       ),
@@ -307,14 +307,17 @@ class Bg extends StatelessWidget {
   }
 }
 
-class MyClipper extends CustomClipper<Rect> {
+class BgClipper extends CustomClipper<Rect> {
   @override
   Rect getClip(Size size) {
     double column = size.width / 4;
     double row = size.height / 8;
 
     Rect rect = Rect.fromCenter(
-        center: Offset(0, row), width: 6 * column, height: row * 4);
+      center: Offset(0, row),
+      width: 6 * column,
+      height: row * 4,
+    );
     return rect;
   }
 
