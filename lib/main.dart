@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_ui/home.dart';
+import 'package:flutter/services.dart';
+import 'package:food_delivery_ui/home/home.dart';
 
 void main() {
   runApp(MyApp());
@@ -8,13 +9,14 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Food Delivery UI',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: SafeArea(bottom: false, child: HomePage()),
+      home: HomePage(),
     );
   }
 }
