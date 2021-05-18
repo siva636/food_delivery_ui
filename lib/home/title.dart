@@ -15,7 +15,7 @@ class FoodDeliveryTitle extends StatelessWidget {
               fontSize: 20, fontWeight: FontWeight.normal, color: Colors.grey),
         ),
         Transform.translate(
-          offset: Offset(0, -5),
+          offset: Offset(-1, -6),
           child: Text(
             'Delivery',
             style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),

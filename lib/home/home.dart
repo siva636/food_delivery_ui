@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_ui/animation.dart';
 import 'package:food_delivery_ui/home/appbar.dart';
@@ -39,7 +40,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     return Scaffold(
       body: Center(
         child: ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: 600),
+          constraints: BoxConstraints(
+            maxWidth: kIsWeb ? 500 : double.infinity,
+          ),
           child: Stack(
             children: [
               ScaleTransition(
@@ -52,7 +55,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(height: 5),
+                    const SizedBox(
+                      height: kIsWeb ? 5 : 50,
+                    ),
                     ScaleTransition(
                         scale: foodDeliveryAnimation.scale(0, 1 / 3),
                         alignment: Alignment.centerLeft,
@@ -76,11 +81,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       child: Text(
                         'Categories',
                         style: const TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
+                            fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ),
                     SizedBox(height: 10),
-                    CategoryList(_controller), //),
+                    CategoryList(_controller),
                     const SizedBox(height: 25),
                     ScaleTransition(
                       scale: foodDeliveryAnimation.scale(2 / 3, 2 / 3 + .1),
@@ -88,7 +93,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       child: Text(
                         'Popular',
                         style: const TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
+                            fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ),
                     SizedBox(height: 10),
