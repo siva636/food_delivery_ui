@@ -27,29 +27,42 @@ class CategoryList extends StatelessWidget {
             double a2 = t1 + (index + 1) * t;
             return ScaleTransition(
               scale: foodDeliveryAnimation.scale(a1, a2),
-              child: Card(
-                elevation: 3,
-                shadowColor: Colors.grey.shade50,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                margin: EdgeInsets.only(right: 15, bottom: 3),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        'assets/images/${e.imageUrl}',
-                        height: 50,
-                        width: 50,
-                        fit: BoxFit.contain,
-                      ),
-                      Text(e.name),
-                      Icon(Icons.play_circle_fill,
-                          color: Colors.deepOrangeAccent),
-                    ],
+              child: GestureDetector(
+                onTap: () => ScaffoldMessenger.of(context)
+                  ..hideCurrentSnackBar()
+                  ..showSnackBar(
+                    SnackBar(
+                      content: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text('Tap a popular item to view details screen'),
+                          ]),
+                    ),
+                  ),
+                child: Card(
+                  elevation: 3,
+                  shadowColor: Colors.grey.shade50,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  margin: EdgeInsets.only(right: 15, bottom: 3),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          'assets/images/${e.imageUrl}',
+                          height: 50,
+                          width: 50,
+                          fit: BoxFit.contain,
+                        ),
+                        Text(e.name),
+                        Icon(Icons.play_circle_fill,
+                            color: Colors.deepOrangeAccent),
+                      ],
+                    ),
                   ),
                 ),
               ),
