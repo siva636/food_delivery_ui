@@ -4,4 +4,4 @@
 
 Design credits: https://dribbble.com/shots/14601764-Food-Delivery-service-Mobile-App
 
-<img src='assets/images/design.png'>
+<img src='assets/images/design.gif'>
