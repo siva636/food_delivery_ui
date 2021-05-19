@@ -12,7 +12,7 @@ class Search extends StatelessWidget {
         floatingLabelBehavior: FloatingLabelBehavior.never,
         isCollapsed: true,
         isDense: false,
-        contentPadding: EdgeInsets.only(top: 15),
+        contentPadding: EdgeInsets.only(top: 15, bottom: 5),
         icon: Transform.translate(
           offset: Offset(0, 5),
           child: Icon(Icons.search),
