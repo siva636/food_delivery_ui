@@ -24,7 +24,7 @@ class FoodDeliveryAnimation {
   Animation<Offset> slide(double t1, double t2) {
     assert(t1 < t2 && t1 >= 0 && t2 <= 1);
     return Tween<Offset>(
-      begin: Offset(5, 0),
+      begin: Offset(4, 0),
       end: Offset(0, 0),
     ).animate(
       CurvedAnimation(
