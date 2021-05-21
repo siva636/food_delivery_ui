@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_ui/animation.dart';
-import 'package:food_delivery_ui/home/appbar.dart';
 import 'package:food_delivery_ui/home/bg.dart';
 import 'package:food_delivery_ui/home/categories.dart';
 import 'package:food_delivery_ui/home/popular.dart';
@@ -58,10 +57,26 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     const SizedBox(
                       height: kIsWeb ? 5 : 50,
                     ),
-                    ScaleTransition(
-                        scale: foodDeliveryAnimation.scale(0, 1 / 3),
-                        alignment: Alignment.centerLeft,
-                        child: CustomAppBar()),
+                    // app bar
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        ScaleTransition(
+                          scale: foodDeliveryAnimation.scale(0, 1 / 3),
+                          child: CircleAvatar(
+                            backgroundImage:
+                                AssetImage('assets/images/avatar.jpg'),
+                          ),
+                        ),
+                        ScaleTransition(
+                          scale: foodDeliveryAnimation.scale(0, 1 / 3),
+                          child: Icon(
+                            Icons.short_text,
+                            textDirection: TextDirection.rtl,
+                          ),
+                        ),
+                      ],
+                    ),
                     const SizedBox(height: 10),
                     ScaleTransition(
                       scale: foodDeliveryAnimation.scale(0, 1 / 3),
