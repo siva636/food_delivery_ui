@@ -68,48 +68,49 @@ class Details extends StatelessWidget {
                 Row(
                   children: [
                     Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Size',
-                            style: labelStyle,
-                          ),
-                          Text(
-                            data.size,
-                            style: infoStyle,
-                          ),
-                          SizedBox(height: 15),
-                          Text(
-                            'Crust',
-                            style: labelStyle,
-                          ),
-                          Text(
-                            data.crustOrHot,
-                            style: infoStyle,
-                          ),
-                          SizedBox(height: 15),
-                          Text(
-                            'Delivery in',
-                            style: labelStyle,
-                          ),
-                          Text(
-                            '30 min',
-                            style: infoStyle,
-                          ),
-                        ]),
-                    Hero(
-                      flightShuttleBuilder: (BuildContext flightContext,
-                              Animation<double> animation,
-                              HeroFlightDirection flightDirection,
-                              BuildContext fromHeroContext,
-                              BuildContext toHeroContext) =>
-                          RotationTransition(
-                              turns: Tween<double>(begin: -1, end: -0.75)
-                                  .animate(animation),
-                              child: toHeroContext.widget),
-                      tag: '${data.name}',
-                      child: Padding(
-                        padding: EdgeInsets.only(left: 50),
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Size',
+                          style: labelStyle,
+                        ),
+                        Text(
+                          data.size,
+                          style: infoStyle,
+                        ),
+                        SizedBox(height: 15),
+                        Text(
+                          'Crust',
+                          style: labelStyle,
+                        ),
+                        Text(
+                          data.crustOrHot,
+                          style: infoStyle,
+                        ),
+                        SizedBox(height: 15),
+                        Text(
+                          'Delivery in',
+                          style: labelStyle,
+                        ),
+                        Text(
+                          '30 min',
+                          style: infoStyle,
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 50),
+                      child: Hero(
+                        flightShuttleBuilder: (BuildContext flightContext,
+                                Animation<double> animation,
+                                HeroFlightDirection flightDirection,
+                                BuildContext fromHeroContext,
+                                BuildContext toHeroContext) =>
+                            RotationTransition(
+                                turns: Tween<double>(begin: 0.5, end: 1)
+                                    .animate(animation),
+                                child: toHeroContext.widget),
+                        tag: '${data.name}',
                         child: Image.asset(
                           'assets/images/${data.imageUrl}',
                           width: 200,

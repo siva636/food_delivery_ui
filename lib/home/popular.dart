@@ -123,21 +123,22 @@ class PopularList extends StatelessWidget {
                   child: Container(
                     margin: EdgeInsets.only(bottom: 15),
                     alignment: Alignment(0.5, 0),
-                    child: Hero(
-                      tag: '${e.name}',
-                      flightShuttleBuilder: (BuildContext flightContext,
-                              Animation<double> animation,
-                              HeroFlightDirection flightDirection,
-                              BuildContext fromHeroContext,
-                              BuildContext toHeroContext) =>
-                          RotationTransition(
-                              turns: Tween<double>(begin: 0.75, end: 1)
-                                  .animate(animation),
-                              child: toHeroContext.widget),
-                      child: SlideTransition(
-                        position: foodDeliveryAnimation.slide(2 / 3, 1),
-                        child: RotationTransition(
-                          turns: foodDeliveryAnimation.rotate(2 / 3, 1),
+                    child: SlideTransition(
+                      position: foodDeliveryAnimation.slide(2 / 3, 1),
+                      child: RotationTransition(
+                        turns: foodDeliveryAnimation.rotate(2 / 3, 1),
+                        child: Hero(
+                          tag: '${e.name}',
+                          flightShuttleBuilder: (BuildContext flightContext,
+                                  Animation<double> animation,
+                                  HeroFlightDirection flightDirection,
+                                  BuildContext fromHeroContext,
+                                  BuildContext toHeroContext) =>
+                              RotationTransition(
+                            turns: Tween<double>(begin: 0, end: 0.5)
+                                .animate(animation),
+                            child: toHeroContext.widget,
+                          ),
                           child: Image.asset(
                             'assets/images/${e.imageUrl}',
                             height: 140,
