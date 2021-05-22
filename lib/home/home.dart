@@ -7,6 +7,8 @@ import 'package:food_delivery_ui/home/popular.dart';
 import 'package:food_delivery_ui/home/search.dart';
 import 'package:food_delivery_ui/home/title.dart';
 
+import 'appbar.dart';
+
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
 
@@ -16,17 +18,16 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
-  late final AnimationController _controller = AnimationController(
-    duration: const Duration(seconds: 3),
-    vsync: this,
-  );
-
+  late final AnimationController _controller;
   late final foodDeliveryAnimation = FoodDeliveryAnimation(_controller);
 
   @override
   void initState() {
     super.initState();
-    _controller.forward();
+    _controller = AnimationController(
+      duration: const Duration(seconds: 3),
+      vsync: this,
+    )..forward();
   }
 
   @override
@@ -58,26 +59,7 @@ class _HomePageState extends State<HomePage>
                     const SizedBox(
                       height: kIsWeb ? 5 : 50,
                     ),
-                    // app bar
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        ScaleTransition(
-                          scale: foodDeliveryAnimation.scale(0, 1 / 3),
-                          child: CircleAvatar(
-                            backgroundImage:
-                                AssetImage('assets/images/avatar.jpg'),
-                          ),
-                        ),
-                        ScaleTransition(
-                          scale: foodDeliveryAnimation.scale(0, 1 / 3),
-                          child: Icon(
-                            Icons.short_text,
-                            textDirection: TextDirection.rtl,
-                          ),
-                        ),
-                      ],
-                    ),
+                    CustomAppBar(_controller),
                     const SizedBox(height: 10),
                     ScaleTransition(
                       scale: foodDeliveryAnimation.scale(0, 1 / 3),
