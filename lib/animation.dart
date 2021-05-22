@@ -21,10 +21,11 @@ class FoodDeliveryAnimation {
     );
   }
 
-  Animation<Offset> slide(double t1, double t2) {
+  Animation<Offset> slide(double t1, double t2,
+      {double beginOffsetX = 4.0, double beginOffsetY = 0}) {
     assert(t1 < t2 && t1 >= 0 && t2 <= 1);
     return Tween<Offset>(
-      begin: Offset(4, 0),
+      begin: Offset(beginOffsetX, beginOffsetY),
       end: Offset(0, 0),
     ).animate(
       CurvedAnimation(

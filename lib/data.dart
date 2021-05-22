@@ -70,7 +70,7 @@ class Popular {
     Popular(
         name: 'Primavera Pizza3',
         imageUrl: 'pizza1.png',
-        price: 3.00,
+        price: 2.99,
         ingredients: [
           'ingredient1.jpg',
           'ingredient2.jpg',
