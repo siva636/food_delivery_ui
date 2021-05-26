@@ -16,10 +16,9 @@ class _DetailsState extends State<Details> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   int animationDuration = 1;
   double scaleAnimationInterval = 3 / 4;
-  double initialStaggeredAnimationDelay = 1 / 4;
-  late double staggeredAnimationInterval =
-      (1 - initialStaggeredAnimationDelay) / 6;
-  double initialOffset = -0.5;
+  double staggeredAnimationInterval = 3 / 4;
+  late double staggeredAnimationDelay = 0.03;
+  double initialOffset = -1;
 
   final TextStyle labelStyle = const TextStyle(
     fontSize: 15,
@@ -109,9 +108,10 @@ class _DetailsState extends State<Details> with SingleTickerProviderStateMixin {
                       children: [
                         SlideTransition(
                           position: FoodDeliveryAnimation(_controller).slide(
-                              initialStaggeredAnimationDelay,
-                              initialStaggeredAnimationDelay +
-                                  staggeredAnimationInterval,
+                              1 -
+                                  staggeredAnimationInterval -
+                                  5 * staggeredAnimationDelay,
+                              1 - 5 * staggeredAnimationDelay,
                               beginOffsetX: initialOffset),
                           child: Text(
                             'Size',
@@ -120,10 +120,10 @@ class _DetailsState extends State<Details> with SingleTickerProviderStateMixin {
                         ),
                         SlideTransition(
                           position: FoodDeliveryAnimation(_controller).slide(
-                              initialStaggeredAnimationDelay +
-                                  staggeredAnimationInterval,
-                              initialStaggeredAnimationDelay +
-                                  2 * staggeredAnimationInterval,
+                              1 -
+                                  staggeredAnimationInterval -
+                                  4 * staggeredAnimationDelay,
+                              1 - 4 * staggeredAnimationDelay,
                               beginOffsetX: initialOffset),
                           child: Text(
                             widget.data.size,
@@ -133,10 +133,10 @@ class _DetailsState extends State<Details> with SingleTickerProviderStateMixin {
                         SizedBox(height: 15),
                         SlideTransition(
                           position: FoodDeliveryAnimation(_controller).slide(
-                              initialStaggeredAnimationDelay +
-                                  2 * staggeredAnimationInterval,
-                              initialStaggeredAnimationDelay +
-                                  3 * staggeredAnimationInterval,
+                              1 -
+                                  staggeredAnimationInterval -
+                                  3 * staggeredAnimationDelay,
+                              1 - 3 * staggeredAnimationDelay,
                               beginOffsetX: initialOffset),
                           child: Text(
                             'Crust',
@@ -145,10 +145,10 @@ class _DetailsState extends State<Details> with SingleTickerProviderStateMixin {
                         ),
                         SlideTransition(
                           position: FoodDeliveryAnimation(_controller).slide(
-                              initialStaggeredAnimationDelay +
-                                  3 * staggeredAnimationInterval,
-                              initialStaggeredAnimationDelay +
-                                  4 * staggeredAnimationInterval,
+                              1 -
+                                  staggeredAnimationInterval -
+                                  2 * staggeredAnimationDelay,
+                              1 - 2 * staggeredAnimationDelay,
                               beginOffsetX: initialOffset),
                           child: Text(
                             widget.data.crustOrHot,
@@ -158,10 +158,10 @@ class _DetailsState extends State<Details> with SingleTickerProviderStateMixin {
                         SizedBox(height: 15),
                         SlideTransition(
                           position: FoodDeliveryAnimation(_controller).slide(
-                              initialStaggeredAnimationDelay +
-                                  4 * staggeredAnimationInterval,
-                              initialStaggeredAnimationDelay +
-                                  5 * staggeredAnimationInterval,
+                              1 -
+                                  staggeredAnimationInterval -
+                                  staggeredAnimationDelay,
+                              1 - staggeredAnimationDelay,
                               beginOffsetX: initialOffset),
                           child: Text(
                             'Delivery in',
@@ -170,10 +170,7 @@ class _DetailsState extends State<Details> with SingleTickerProviderStateMixin {
                         ),
                         SlideTransition(
                           position: FoodDeliveryAnimation(_controller).slide(
-                              initialStaggeredAnimationDelay +
-                                  5 * staggeredAnimationInterval,
-                              initialStaggeredAnimationDelay +
-                                  6 * staggeredAnimationInterval,
+                              1 - staggeredAnimationInterval, 1,
                               beginOffsetX: initialOffset),
                           child: Text(
                             '30 min',
